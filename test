@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer une bibliothèque MicroBlocks</title>
+    <style>
+        :root {
+            --primary-color: #0284c7;
+            --primary-dark: #0369a1;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --code-bg: #0f172a;
+            --code-text: #f8fafc;
+            --accent-bg: #f0f9ff;
+            --accent-border: #bae6fd;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--border-color);
+        }
+
+        header {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            color: var(--primary-dark);
+            margin-top: 0;
+            font-size: 2.25rem;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-top: -0.5rem;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        h3 {
+            color: var(--text-color);
+            margin-top: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        ul, ol {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        code {
+            background-color: #f1f5f9;
+            color: #0f172a;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 0.9em;
+        }
+
+        .note-box {
+            background-color: var(--accent-bg);
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem 1.25rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+        }
+
+        .note-box p {
+            margin: 0;
+        }
+
+        .step-list {
+            list-style-type: none;
+            padding-left: 0;
+            counter-reset: step-counter;
+        }
+
+        .step-list li {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .step-list li::before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Comment créer une bibliothèque</h1>
+        <div class="subtitle">Guide étape par étape pour créer votre propre bibliothèque MicroBlocks (par Turgut Guneysu)</div>
+    </header>
+
+    <main>
+        <section>
+            <h2>Qu'est-ce qu'une bibliothèque ?</h2>
+            <p>Lorsque nous écrivons du code et que nous nous surprenons à répéter un ensemble d'instructions ou certaines procédures, il peut être utile de les coder une seule fois et de convertir le tout en <strong>Bibliothèque</strong>. Ainsi, nous et les autres pourrons l'utiliser plus tard en chargeant simplement la bibliothèque dans nos programmes.</p>
+            <p>Une bibliothèque est un ensemble de code, généralement axé sur l'activation d'un composant, d'un périphérique ou d'une fonctionnalité spécifique. Ce qui distingue une bibliothèque d'un programme, c'est qu'elle constitue un composant ou une brique de construction qui sera utilisée <em>dans</em> un programme, mais qu'elle ne forme pas un programme complet en soi.</p>
+            <p>Les bibliothèques peuvent être créées soit à l'aide de l'IDE (environnement de développement) de MicroBlocks, soit en écrivant du code dans le langage d'origine utilisé pour créer l'IDE à l'origine.</p>
+        </section>
+
+        <section>
+            <h2>Qu'est-ce qui fait une bonne bibliothèque ?</h2>
+            <p>Une bonne bibliothèque doit :</p>
+            <ul>
+                <li>Avoir un <strong>objectif précis</strong>.</li>
+                <li>Mettre en œuvre une <strong>interface utilisateur propre</strong>.</li>
+                <li>Ne pas inclure de <strong>choses inutiles</strong>.</li>
+            </ul>
+            <p>Pour atteindre ces objectifs, un peu de planification et de réflexion s'impose.</p>
+
+            <h3>1. Objectif (Purpose)</h3>
+            <p>La bibliothèque doit remplir une fonction spécifique pour obtenir un résultat défini. Pour y parvenir, il faut réduire la tâche à sa fonctionnalité la plus importante et l'isoler dans la bibliothèque. Qu'il s'agisse de piloter un matériel ou d'effectuer une manipulation de données, l'objectif doit être clair et concis.</p>
+
+            <h3>2. Interface utilisateur (User Interface)</h3>
+            <p>C'est la partie la plus visible et la plus importante. Les utilisateurs interagiront avec notre code via l'interface utilisateur et jugeront de sa simplicité et de sa clarté à travers elle.</p>
+            <p>Pour l'organiser, il faut identifier :</p>
+            <ul>
+                <li><strong>Les entrées (Inputs) :</strong> toutes les données dont la bibliothèque a besoin de la part de l'utilisateur pour fonctionner (organisées en paramètres).</li>
+                <li><strong>Les sorties (Outputs) :</strong> ce que la bibliothèque renvoie ou modifie physiquement en retour (toutes les fonctions ne renvoient pas forcément une valeur).</li>
+            </ul>
+
+            <h3>3. Pertinence (Relevance)</h3>
+            <p>La bibliothèque ne doit pas faire de choses superflues. Souvent, le code d'une bibliothèque naît de blocs personnalisés créés pour un besoin ponctuel dans un projet. Il est facile de se laisser emporter et d'ajouter de plus en plus de fonctionnalités, ce qui alourdit inutilement le code final. Il est préférable de cibler strictement l'objectif initial.</p>
+
+            <div class="note-box">
+                <p><strong>Remarque :</strong> Les blocs d'une bibliothèque MicroBlocks ne doivent pas dépasser 1000 octets.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Passons à la pratique : Écrivons-en une !</h2>
+            <p>Pour faire simple, développons une bibliothèque simple en utilisant l'IDE MicroBlocks.</p>
+
+            <h3>Objectif</h3>
+            <p>Nous voulons améliorer les capacités de messagerie radio par défaut des micro:bit (limitées à 17 octets) pour permettre d'envoyer des messages de n'importe quelle taille, de tout type (chaînes de caractères, nombres, listes, booléens). En option, si le message dépasse 17 octets, nous afficherons le nombre de tampons (buffers) sur la matrice LED de l'appareil.</p>
+
+            <h3>Interface</h3>
+            <ul>
+                <li><strong>Nom du bloc :</strong> <code>RadioMsg</code></li>
+                <li><strong>Paramètre de message :</strong> <code>msg</code> (type nombre/chaîne).</li>
+                <li><strong>Paramètre optionnel d'affichage :</strong> <code>ShowBuf</code> (interrupteur booléen <code>bufYN</code>).</li>
+            </ul>
+
+            <h3>Blocs de code</h3>
+            <p>Le programme gère les étapes suivantes :</p>
+            <ol>
+                <li><strong>Variables locales :</strong>
+                    <ul>
+                        <li><code>Delay</code> pour espacer les transmissions radio et ne pas saturer le réseau.</li>
+                        <li><code>radMsgSize</code> pour définir la taille maximale de chaque morceau (17 octets).</li>
+                        <li><code>msgOut</code> pour stocker la longueur du message.</li>
+                    </ul>
+                </li>
+                <li><strong>Conversion du type :</strong> Le message est converti au format texte (les listes deviennent des chaînes séparées par des virgules, les booléens deviennent "true/false", etc.) à l'aide du bloc de jointure de listes.</li>
+                <li><strong>Découpage et Envoi :</strong>
+                    <ul>
+                        <li>Si le message fait 17 octets ou moins, il est envoyé directement.</li>
+                        <li>S'il est plus grand, une boucle s'occupe d'envoyer chaque morceau (<code>msgPart</code>) un par un en s'appuyant sur le compteur <code>buff#</code>.</li>
+                        <li>Si le paramètre <code>ShowBuf</code> est activé, la progression s'affiche sur la matrice LED.</li>
+                    </ul>
+                </li>
+                <li><strong>Nettoyage :</strong> L'affichage de l'appareil est effacé à la fin.</li>
+            </ol>
+            <p>Enregistrez votre programme source sous le nom : <code>RadioMsg.ubp</code>.</p>
+        </section>
+
+        <section>
+            <h2>Conversion au format de bibliothèque (.ubl)</h2>
+            <p>Les modules de bibliothèque utilisent l'extension <strong>.ubl</strong>.</p>
+            <ol class="step-list">
+                <li>Activez l'option <strong>« Afficher les blocs avancés »</strong> (<em>Show advanced blocks</em>) dans le menu Paramètres (<em>Settings</em>).</li>
+                <li>Rendez-vous dans le menu Fichier (<em>File</em>) et sélectionnez <strong>« Exporter les fonctions en tant que bibliothèque »</strong> (<em>Export functions as library</em>).</li>
+                <li>Entrez le nom de votre bibliothèque : <code>RadioMsg</code> et cliquez sur OK.</li>
+                <li>Enregistrez le fichier sur votre ordinateur. Il sera sauvegardé sous le nom <strong><code>RadioMsg.ubl</code></strong>.</li>
+            </ol>
+            <p>Vous pouvez désormais aller dans la section <strong>Bibliothèques+</strong> de l'IDE MicroBlocks, charger votre fichier <code>.ubl</code>, et l'utiliser dans n'importe quel autre programme !</p>
+        </section>
+
+        <section>
+            <h2>Gestion des versions (Versioning)</h2>
+            <p>Travailler avec des scripts destinés à devenir des bibliothèques implique quelques bonnes pratiques :</p>
+            <ul>
+                <li><strong>Fichier source :</strong> Continuez de travailler et de tester vos modifications dans le fichier source d'origine <code>RadioMsg.ubp</code>.</li>
+                <li><strong>Exportation des versions :</strong>
+                    <p>Lorsque vous exportez, modifiez éventuellement le nom pour y inclure un numéro de version (par exemple : <code>RadioMsg-v01.ubl</code>).</p>
+                    <p>Vous obtiendrez ainsi une structure propre :</p>
+                    <ul>
+                        <li>Fichier d'origine : <code>RadioMsg.ubp</code></li>
+                        <li>Versions de bibliothèque : <code>RadioMsg.ubl</code>, <code>RadioMsg-v01.ubl</code>, etc.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>Méthode alternative pour ajouter des blocs directement :</h3>
+            <ol class="step-list">
+                <li>Glissez-déposez le fichier <code>.ubl</code> de la bibliothèque dans un nouveau projet MicroBlocks.</li>
+                <li>Créez et testez vos nouveaux blocs dans la catégorie <strong>« Mes blocs »</strong> (<em>My Blocks</em>).</li>
+                <li>Faites un clic droit sur le nouveau bloc personnalisé, sélectionnez <strong>« Afficher la définition du bloc »</strong>, puis cliquez sur <strong>« Ajouter à la bibliothèque »</strong> (<em>Add to library</em>) et choisissez le nom de votre bibliothèque chargée.</li>
+                <li>Ré-exportez la bibliothèque avec un nouveau numéro de version.</li>
+            </ol>
+        </section>
+    </main>
+
+    <footer>
+        <p>Document traduit de la documentation officielle de MicroBlocks Wiki.</p>
+    </footer>
+</div>
+
+</body>
+</html>
