@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Référence des blocs | Wiki MicroBlocks</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        h1 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            color: #1a252f;
+        }
+        h2 {
+            margin-top: 40px;
+            color: #2980b9;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 5px;
+        }
+        h3 {
+            margin-top: 25px;
+            color: #d35400;
+        }
+        ul {
+            margin-top: 5px;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        code {
+            background-color: #e2e8f0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: "SFMono-Regular", Consolas, monospace;
+            font-size: 0.9em;
+        }
+        .intro {
+            background-color: #e0f2fe;
+            border-left: 4px solid #0284c7;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border-radius: 0 4px 4px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Référence des blocs (Blocks Reference)</h1>
+    
+    <div class="intro">
+        Descriptions succinctes de tous les blocs disponibles dans la palette.<br>
+        <em>Astuce :</em> Dans toutes les sections « Plus de détails et exemples » du wiki officiel, vous pouvez glisser-déposer directement les blocs d'exemple vers la zone de scripts de l'IDE MicroBlocks pour les copier et les exécuter immédiatement.
+    </div>
+
+    <!-- SORTIE -->
+    <section id="output">
+        <h2>Sortie (Output)</h2>
+        <ul>
+            <li>Allume ou éteint la LED utilisateur. Sur le micro:bit (et les cartes qui simulent un affichage micro:bit), la LED utilisateur se trouve au centre de la première ligne de l'affichage.</li>
+            <li>Affiche une bulle contenant la ou les valeurs indiquées.</li>
+            <li>Trace la ou les valeurs données dans le panneau d'affichage des graphiques de données.</li>
+            <li>Efface les valeurs tracées sur le graphique.</li>
+        </ul>
+    </section>
+
+    <!-- ENTRÉE -->
+    <section id="input">
+        <h2>Entrée (Input)</h2>
+        <ul>
+            <li>Renvoie l'état du bouton A (<code>true</code> = pressé, <code>false</code> = relâché).</li>
+            <li>Renvoie l'état du bouton B (<code>true</code> = pressé, <code>false</code> = relâché).</li>
+            <li>Renvoie le nombre de millisecondes écoulées depuis la dernière réinitialisation du chronomètre, puis remet le chronomètre à zéro (les blocs millisecondes et microsecondes ne sont pas affectés).</li>
+            <li>Renvoie les secondes écoulées depuis la mise sous tension ou la réinitialisation matérielle de la carte.</li>
+            <li>Renvoie les millisecondes écoulées depuis la mise sous tension ou la réinitialisation matérielle de la carte.</li>
+            <li>Renvoie les microsecondes écoulées depuis la mise sous tension ou la réinitialisation matérielle de la carte.</li>
+            <li>Renvoie le type de cet appareil (ex: micro:bit, ESP32 ou Clue).</li>
+            <li>Indique si le microcontrôleur est connecté à l'IDE.</li>
+            <li>Renvoie la version du micrologiciel (firmware) présent sur le microcontrôleur.</li>
+            <li>Renvoie l'identifiant BLE à 3 lettres du microcontrôleur.</li>
+            <li>Renvoie les millisecondes écoulées depuis un temps de référence donné.</li>
+            <li>Renvoie les microsecondes écoulées depuis un temps de référence donné.</li>
+        </ul>
+    </section>
+
+    <!-- BROCHES -->
+    <section id="pins">
+        <h2>Broches (Pins)</h2>
+        <ul>
+            <li>Renvoie la valeur (vrai ou faux) d'une broche numérique donnée.</li>
+            <li>Renvoie la valeur (0 - 1023) d'une broche analogique donnée.</li>
+            <li>Définit la valeur (vrai ou faux) d'une broche numérique donnée.</li>
+            <li>Définit la valeur (0 - 1023) d'une broche analogique donnée.</li>
+            <li>Renvoie le nombre total de broches analogiques prises en charge par cet appareil.</li>
+            <li>Renvoie le nombre total de broches numériques prises en charge par cet appareil.</li>
+        </ul>
+    </section>
+
+    <!-- COMMUNICATION -->
+    <section id="comm">
+        <h2>Communication (Comm)</h2>
+        <p>La catégorie Comm contient des blocs pour communiquer avec des périphériques matériels via un bus I2C (Inter-Integrated Circuit), SPI (Serial Peripheral Interface) ou le port série UART. Ces blocs avancés sont généralement utilisés par des personnes expérimentées pour créer des bibliothèques destinées à des capteurs ou au kit robotique Hummingbird:bit.</p>
+        <p>Pour utiliser ces blocs, vous devez consulter la fiche technique (datasheet) du matériel concerné. De nombreux appareils I2C et SPI doivent être configurés ou activés avant utilisation. Il est souvent utile d'étudier le code source d'une bibliothèque existante.</p>
+        <p><em>Remarque :</em> La catégorie Comm n'est visible que lorsque l'option « afficher les blocs avancés » a été activée.</p>
+        
+        <h3>Avancé</h3>
+        <ul>
+            <li>Renvoie la valeur d'un registre donné (0-255) d'un appareil I2C (0-127).</li>
+            <li>Écrit un octet (0-255) sur un appareil I2C et un registre donnés.</li>
+            <li>Reçoit plusieurs octets d'un appareil I2C donné.</li>
+            <li>Envoie plusieurs octets à un appareil I2C donné.</li>
+            <li>Envoie un octet à un appareil SPI.</li>
+            <li>Lit un octet d'un appareil SPI tout en envoyant un octet nul, et renvoie l'octet reçu.</li>
+            <li>Ouvre le port série à la vitesse (baud rate) spécifiée.</li>
+            <li>Ferme le port série.</li>
+            <li>Reçoit plusieurs octets du port série.</li>
+            <li>Envoie plusieurs octets sur le port série.</li>
+            <li>Envoie plusieurs octets sur le port série à partir d'un octet sélectionné.</li>
+            <li>Envoie un octet au port série logiciel (softSerial).</li>
+            <li>Reçoit plusieurs octets d'un appareil Duelink (sous forme de tableau d'octets).</li>
+            <li>Envoie plusieurs octets à l'appareil Duelink à partir d'un octet sélectionné.</li>
+        </ul>
+    </section>
+
+    <!-- CONTRÔLE -->
+    <section id="control">
+        <h2>Contrôle (Control)</h2>
+        <ul>
+            <li><strong>quand démarré :</strong> Les blocs placés sous ce chapeau s'exécutent à la mise sous tension ou lorsque l'icône verte DÉMARRAGE est cliquée.</li>
+            <li><strong>quand le bouton est pressé :</strong> S'exécute lorsque les boutons A, B ou A+B sont pressés.</li>
+            <li><strong>répéter indéfiniment (forever) :</strong> Boucle en C qui s'exécute en continu, indéfiniment.</li>
+            <li><strong>répéter (repeat) :</strong> Boucle en C qui s'exécute un nombre de fois spécifié.</li>
+            <li><strong>attendre millisecondes :</strong> Fait une pause du nombre de millisecondes indiqué avant de continuer.</li>
+            <li><strong>si (if) :</strong> Exécute les blocs internes uniquement si la condition est vraie.</li>
+            <li><strong>quand (when) :</strong> S'exécute dès que la condition spécifiée devient vraie.</li>
+            <li><strong>attendre jusqu'à ce que (wait until) :</strong> Met en pause l'exécution jusqu'à ce que la condition devienne vraie.</li>
+            <li><strong>retourner (return) :</strong> Starrête l'exécution du script et renvoie la valeur indiquée comme résultat.</li>
+            <li><strong>quand le message est reçu :</strong> S'exécute lorsqu'un message du nom spécifié est diffusé.</li>
+            <li><strong>envoyer le message (broadcast) :</strong> Diffuse le message spécifié.</li>
+            <li><strong>commentaire :</strong> Ne fait rien en soi ; sert à ajouter des notes et de la documentation.</li>
+            <li><strong>intervalle (range) :</strong> Utilisé pour définir une plage de paramètres dans la boucle POUR.</li>
+            <li><strong>pour (for) :</strong> Boucle en C qui s'exécute un nombre de fois donné, en affectant à une variable le numéro d'itération.</li>
+            <li><strong>répéter jusqu'à ce que (repeat until) :</strong> Boucle en C qui tourne jusqu'à ce que la condition devienne vraie.</li>
+            <li><strong>arrêter cette tâche :</strong> Arrête l'exécution du script dans lequel il se trouve.</li>
+            <li><strong>arrêter les autres tâches :</strong> Stoppe tous les autres scripts en cours, tandis que le script actuel continue de tourner.</li>
+        </ul>
+        
+        <h3>Avancé</h3>
+        <ul>
+            <li><strong>attendre microsecondes :</strong> Pause pour un nombre précis de microsecondes.</li>
+            <li><strong>dernier message :</strong> Renvoie le dernier message reçu suite à un bloc de diffusion.</li>
+            <li><strong>arg :</strong> Renvoie la valeur de l'argument de fonction sélectionné.</li>
+            <li><strong>appeler la commande personnalisée :</strong> Appelle un bloc personnalisé (fonction) avec éventuellement une liste de paramètres.</li>
+            <li><strong>appeler le rapporteur personnalisé :</strong> Appelle une fonction personnalisée et renvoie son résultat.</li>
+        </ul>
+    </section>
+
+    <!-- OPÉRATEURS -->
+    <section id="operators">
+        <h2>Opérateurs (Operators)</h2>
+        <ul>
+            <li>Plus, Moins, Multiplié, Divisé.</li>
+            <li>Renvoie le reste de la division (modulo).</li>
+            <li>Renvoie la valeur absolue (toujours >= 0).</li>
+            <li>Renvoie le plus petit / plus grand de deux valeurs.</li>
+            <li>Renvoie un nombre choisi aléatoirement entre deux limites.</li>
+            <li>Renvoie la somme des arguments.</li>
+            <li>Comparaisons : inférieur, inférieur ou égal, égal, différent, supérieur ou égal, supérieur.</li>
+            <li>Constante booléenne (vrai / faux).</li>
+            <li>Inverse logique (NON).</li>
+            <li>ET logique, OU logique.</li>
+            <li>Conversion en chaîne de caractères (String).</li>
+            <li>Vérification du type de données.</li>
+            
+            <h3>Avancé</h3>
+            <li>Opérateur conditionnel (si ... alors ... sinon ...).</li>
+            <li>Mise à l'échelle (scale) d'une valeur d'une plage vers une autre.</li>
+            <li>Racine carrée, calculs trigonométriques (angle de triangle rectangle).</li>
+            <li>Conversion de chaînes hexadécimales et binaires.</li>
+            <li>Opérations binaires (Bitwise) : ET, OU, OU exclusif (XOR), NON (NOT), décalage à gauche (LEFT SHIFT), décalage à droite (RIGHT SHIFT).</li>
+        </ul>
+    </section>
+
+    <!-- VARIABLES -->
+    <section id="variables">
+        <h2>Variables</h2>
+        <ul>
+            <li><strong>[Bouton] Créer une variable :</strong> Crée une variable globale utilisable dans tous les scripts.</li>
+            <li><strong>[Bouton] Supprimer une variable.</strong></li>
+            <li>Attribue une valeur donnée à une variable.</li>
+            <li>Modifie (incrémente/décrémente) la valeur d'une variable d'un montant donné.</li>
+            
+            <h3>Avancé</h3>
+            <li>Crée une variable locale au script conteneur, initialisée à la valeur donnée.</li>
+        </ul>
+    </section>
+
+    <!-- DONNÉES -->
+    <section id="data">
+        <h2>Données (Data / Listes)</h2>
+        <ul>
+            <li>Renvoie le N-ième élément d'une liste, d'une chaîne ou d'un tableau d'octets.</li>
+            <li>Renvoie le nombre d'éléments dans une liste, une chaîne ou un tableau d'octets.</li>
+            <li>Combine (concatène) des chaînes, listes ou tableaux d'octets.</li>
+            <li>Crée une courte liste contenant les éléments spécifiés.</li>
+            <li>Ajoute un élément à la fin d'une liste.</li>
+            <li>Remplace le N-ième élément d'une liste par une valeur donnée.</li>
+            <li>Supprime le N-ième élément d'une liste.</li>
+            <li>Recherche la position d'une sous-chaîne ou d'un élément (renvoie -1 si absent).</li>
+            <li>Renvoie une copie d'une portion (tranche) de liste, de chaîne ou de tableau d'octets.</li>
+            <li>Divise une chaîne de caractères en une liste selon un séparateur (split).</li>
+            
+            <h3>Avancé</h3>
+            <li>Joint les éléments d'une liste en une chaîne de caractères avec un séparateur optionnel.</li>
+            <li>Renvoie la valeur numérique Unicode du N-ième caractère.</li>
+            <li>Renvoie le caractère Unicode correspondant à un nombre.</li>
+            <li>Crée une nouvelle liste de longueur donnée avec tous les éléments à zéro.</li>
+            <li>Crée un tableau d'octets initialisé à zéro.</li>
+            <li>Convertit une chaîne en tableau d'octets.</li>
+            <li>Indique la mémoire dynamique disponible (mots de 32 bits).</li>
+        </ul>
+    </section>
+
+    <!-- MES BLOCS -->
+    <section id="my-blocks">
+        <h2>Mes Blocs (My Blocks)</h2>
+        <ul>
+            <li><strong>[Bouton]</strong> Crée un bloc de commande personnalisé (fonction).</li>
+            <li><strong>[Bouton]</strong> Crée un bloc rapporteur personnalisé (fonction avec retour).</li>
+        </ul>
+    </section>
+
+</body>
+</html>
