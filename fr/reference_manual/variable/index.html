@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables | Wiki MicroBlocks</title>
+</head>
+<body>
+
+    <main>
+        <h1>Variables</h1>
+
+        <!-- Section: Ajouter une variable -->
+        <section id="add-a-variable">
+            <h2>Ajouter une variable</h2>
+            
+            <h3>Description</h3>
+            <p>
+                Ce bloc est en réalité un bouton. Il permet de créer une nouvelle variable globale. 
+                Si une variable portant le même nom existe déjà, la nouvelle variable sera créée en ajoutant le chiffre 2 à la fin de son nom.
+            </p>
+            <p>
+                <em>Exemple :</em> Une variable avec le nom <code>test</code> existe. Une autre est créée avec le même nom. 
+                Le nom de la nouvelle variable devient <code>test2</code>.
+            </p>
+            <p>
+                Les deux images ci-dessous illustrent la création de la variable <code>test</code>, suivie de son apparition dans la liste des variables.
+            </p>
+
+            <h3>Exemple</h3>
+            <!-- Références aux images de la documentation d'origine -->
+            <p>
+                <img src="https://wiki.microblocks.fun/en/reference_manual/variables/add_variable1.png" alt="Création de la variable test">
+                <img src="https://wiki.microblocks.fun/en/reference_manual/variables/add_variable2.png" alt="Variable test dans la liste">
+            </p>
+        </section>
+
+        <hr>
+
+        <!-- Section: Supprimer une variable -->
+        <section id="delete-a-variable">
+            <h2>Supprimer une variable</h2>
+
+            <h3>Description</h3>
+            <p>
+                Ce bloc est en réalité un bouton. Il n'est généralement pas visible, sauf si au moins une variable a été créée. 
+                Une fois qu'une variable existe, ce bouton est utilisé pour la supprimer.
+            </p>
+
+            <h3>Exemple</h3>
+            <p>
+                Les deux images ci-dessous illustrent le processus de suppression d'une variable.
+            </p>
+            <p>
+                Lorsque l'on clique sur le bouton <strong>SUPPRIMER UNE VARIABLE</strong> (<em>DELETE A VARIABLE</em>), une liste de toutes les variables globales est présentée. 
+                Ici, la variable <code>total</code> est sur le point d'être supprimée : elle est sélectionnée et cliquée.
+            </p>
+            <p>
+                La seconde image montre l'état de l'affichage des variables avec les variables restantes.
+            </p>
+            <p>
+                <img src="https://wiki.microblocks.fun/en/reference_manual/variables/delete_variable1.png" alt="Sélection de la variable total à supprimer">
+                <img src="https://wiki.microblocks.fun/en/reference_manual/variables/delete_variable2.png" alt="Liste des variables après suppression">
+            </p>
+        </section>
+
+        <hr>
+
+        <!-- Section: Définir / Assigner une variable -->
+        <section id="set-variable">
+            <h2>Définir la variable (<em>Set variable</em>)</h2>
+
+            <h3>Description</h3>
+            <p>
+                Ce bloc est utilisé pour assigner des valeurs aux variables. Son menu de sélection affiche la liste de toutes les variables globales et locales.
+            </p>
+            <p>
+                Pour afficher les noms des variables locales dans le menu de sélection, ce bloc doit être attaché physiquement à la séquence de blocs où le bloc <strong>INITIALISER VARIABLE LOCALE</strong> (<em>INITIALIZE LOCAL</em>) est utilisé.
+            </p>
+            <p>
+                En plus d'afficher les noms des variables, le menu de sélection propose également une option pour ajouter une variable. Cela peut être utilisé pour ajouter des variables tout en modifiant le code du programme, sans avoir à basculer vers les options de la catégorie des variables.
+            </p>
+
+            <h3>Exemple</h3>
+            <p>
+                Le code d'exemple montre la création d'une variable locale <code>var</code> et l'attribution de la valeur <code>123</code> à la variable globale <code>test</code>.
+            </p>
+            <p>
+                <img src="https://wiki.microblocks.fun/en/reference_manual/variables/set_variable.png" alt="Exemple d'utilisation du bloc set variable">
+            </p>
+            <p>
+                <a href="https://wiki.microblocks.fun/en/reference_manual/variables/set_variable.ubp">Lien de téléchargement du projet (.ubp)</a>
+            </p>
+        </section>
+
+        <hr>
+
+        <!-- Section: Modifier une variable -->
+        <section id="change-variable">
+            <h2>Modifier la variable (<em>Change variable</em>)</h2>
+
+            <h3>Description</h3>
+            <p>
+                Ce bloc modifie la valeur de n'importe quelle variable, globale ou locale, de la quantité spécifiée dans la zone de saisie. 
+                La valeur de modification peut être un nombre positif ou négatif.
+            </p>
+
+            <h3>Exemple</h3>
+            <p>
+                Le programme modifie les valeurs des deux variables <code>test</code> et <code>var</code>.
+            </p>
+            <p>
+                <img src="https://wiki.microblocks.fun/en/reference_manual/variables/change_variable.png" alt="Exemple d'utilisation du bloc change variable">
+            </p>
+            <p>
+                <a href="https://wiki.microblocks.fun/en/reference_manual/variables/change_variable.ubp">Lien de téléchargement du projet (.ubp)</a>
+            </p>
+        </section>
+
+        <hr>
+
+        <!-- Section: Initialiser une variable locale -->
+        <section id="initialize-local">
+            <h2>Initialiser une variable locale (<em>Initialize local</em>)</h2>
+
+            <h3>Description</h3>
+            <p>
+                Ce bloc est utilisé pour créer et initialiser une variable locale. Une variable locale ne peut être utilisée que dans le script où elle apparaît et elle est réinitialisée à chaque fois que le script est exécuté ; sa valeur <strong>N'EST PAS</strong> conservée. Des variables locales portant le même nom dans des scripts différents sont totalement indépendantes les unes des autres.
+            </p>
+            <p>
+                Le nom par défaut de la variable <code>var</code> peut être modifié en cliquant sur le nom et en tapant un nouveau nom dans la boîte de dialogue qui s'ouvre.
+            </p>
+            <p>
+                Les blocs <em>définir la variable</em> ou <em>modifier la variable</em> peuvent être utilisés pour changer la valeur de la variable locale n'importe où dans le script.
+            </p>
+
+            <h3>Variables Globales vs Variables Locales</h3>
+            <p>Une variable <strong>globale</strong> possède :</p>
+            <ul>
+                <li><strong>Portée globale :</strong> Une variable globale peut être utilisée dans n'importe quel script qui ne possède pas de variable locale du même nom venant la masquer.</li>
+                <li><strong>Longue durée de vie :</strong> Une variable globale est créée explicitement et existe jusqu'à ce qu'elle soit explicitement supprimée. Elle conserve sa valeur lorsque les scripts démarrent et s'arrêtent, et même lorsqu'aucun script n'est en cours d'exécution. Cependant, cliquer sur le bouton « stop » réinitialise toutes les variables globales à la valeur zéro. Les variables globales sont également initialisées à zéro lors de leur première création et lorsqu'un projet est chargé.</li>
+            </ul>
+
+            <p>En revanche, une variable <strong>locale</strong> possède :</p>
+            <ul>
+                <li><strong>Portée locale :</strong> Une variable locale ne peut être utilisée que dans le script où elle apparaît. Si plusieurs scripts utilisent des variables locales portant le même nom, ces variables sont indépendantes les unes des autres.</li>
+                <li><strong>Durée de vie limitée :</strong> Une variable locale pour un script est créée lorsque le script démarre et supprimée lorsque le script se termine. Une nouvelle variable locale est créée et réinitialisée à chaque exécution du script ; la valeur de la variable n'est pas conservée. Si une fonction s'appelle elle-même de manière récursive, les arguments et les variables locales de chaque appel de fonction sont indépendants les uns des autres (c'est ce qui rend la récursion possible).</li>
+                <li><strong>Priorité sur les variables globales :</strong> Si une variable locale porte le même nom qu'une variable globale, la variable locale masque la variable globale dans le script où elle apparaît. Une variable est locale dans l'ensemble du script, peu importe l'endroit où le bloc « initialiser la variable locale <code>var</code> à » apparaît (bien qu'il soit recommandé selon les bonnes pratiques de programmation de placer l'initialisation avant toute autre référence à cette variable).</li>
+            </ul>
+
+            <p>
+                Tout ce qui concerne les variables locales s'applique également aux variables de paramètres d'une fonction. Vous pouvez considérer les paramètres comme des variables locales pré-initialisées par le script appelant.
+            </p>
+
+            <h3>Exemple</h3>
+            <p>
+                <img src="https://wiki.microblocks.fun/en/reference_manual/variables/initialize_local.png" alt="Exemple d'initialisation de variable locale">
+            </p>
+            <p>
+                <a href="https://wiki.microblocks.fun/en/reference_manual/variables/initialize_local.ubp">Lien de téléchargement du projet (.ubp)</a>
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <hr>
+        <p><small>Le contenu est disponible sous la licence Creative Commons Attribution-ShareAlike, par MicroBlocks. | Propulsé par Wiki.js</small></p>
+    </footer>
+
+</body>
+</html>
